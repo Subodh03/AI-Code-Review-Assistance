@@ -1,4 +1,4 @@
--- AI Code Review Assistant - schema
+
 
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
