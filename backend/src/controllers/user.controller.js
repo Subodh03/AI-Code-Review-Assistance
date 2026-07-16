@@ -51,8 +51,7 @@ const updateAvatar = asyncHandler(async (req, res) => {
     return res.status(400).json({ message: "No file uploaded." });
   }
 
-  // Local dev serves uploads statically from /uploads (see server.js).
-  // In production, replace this with the uploaded object's S3/Supabase URL.
+ 
   const avatarUrl = `/uploads/${req.file.filename}`;
 
   const result = await pool.query(
