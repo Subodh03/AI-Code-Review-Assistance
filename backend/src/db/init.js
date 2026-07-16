@@ -1,7 +1,3 @@
-// Initializes the database by running schema.sql through the same `pg`
-// library the app already uses. This exists so Windows users (and anyone
-// without psql on their PATH) don't need the psql CLI at all --
-// `npm run db:init` is enough.
 
 require("dotenv").config();
 const fs = require("fs");
