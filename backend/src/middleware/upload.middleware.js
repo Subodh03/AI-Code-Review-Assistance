@@ -15,8 +15,7 @@ const storage = multer.diskStorage({
 
 const maxSizeMb = Number(process.env.MAX_UPLOAD_SIZE_MB || 5);
 
-// NOTE: for production, swap this disk storage for S3 / Supabase Storage
-// and store the resulting public URL instead of a local path.
+
 const upload = multer({
   storage,
   limits: { fileSize: maxSizeMb * 1024 * 1024 },
