@@ -18,8 +18,6 @@ app.use(
 );
 app.use(express.json({ limit: "2mb" }));
 app.use(express.urlencoded({ extended: true }));
-
-// Serves uploaded avatars/local dev file uploads.
 app.use("/uploads", express.static(path.join(__dirname, "..", "uploads")));
 
 app.get("/api/health", (req, res) => res.json({ status: "ok" }));
