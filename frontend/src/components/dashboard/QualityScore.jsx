@@ -1,6 +1,4 @@
-// A composite 0-100 score: starts at 100, docked per issue found, weighted by
-// severity. This is a simple heuristic (not a research-grade metric) meant to
-// give a single at-a-glance number, similar to a credit-score style gauge.
+
 function computeScore(severityTotals = {}, totalReviews = 0) {
   if (!totalReviews) return null;
   const critical = severityTotals.critical || 0;
