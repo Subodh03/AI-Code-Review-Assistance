@@ -103,4 +103,4 @@ npm run dev                 # http://localhost:5173
   S3/Supabase Storage in production
 - ESLint/JS static analysis path is stubbed next to the Pylint implementation
 
-See inline `// TODO` comments in the relevant service files.
+
