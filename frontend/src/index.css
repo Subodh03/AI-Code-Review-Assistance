@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: 250 248 243;
+  --color-surface: 255 255 255;
+  --color-surface-alt: 243 240 230;
+  --color-surface-hover: 245 242 233;
+  --color-border: 231 226 214;
+  --color-border-light: 216 210 193;
+  --color-ink-primary: 22 33 30;
+  --color-ink-muted: 138 133 120;
+  --color-ink-faint: 176 170 154;
+  --color-accent: 22 97 90;
+  --color-accent-hover: 14 74 68;
+  --color-critical: 181 67 47;
+  --color-critical-soft: 251 234 231;
+  --color-warning: 156 107 24;
+  --color-warning-soft: 253 243 227;
+  --color-info: 46 107 152;
+  --color-info-soft: 232 241 250;
+  --color-success: 63 125 79;
+  --color-success-soft: 233 242 233;
+  --shadow-card: 0 1px 2px rgba(22, 33, 30, 0.04), 0 1px 0 rgba(22, 33, 30, 0.03);
+}
+
+html.dark {
+  --color-bg: 15 17 21;
+  --color-surface: 23 26 33;
+  --color-surface-alt: 29 33 43;
+  --color-surface-hover: 35 40 55;
+  --color-border: 38 43 54;
+  --color-border-light: 50 56 71;
+  --color-ink-primary: 231 233 238;
+  --color-ink-muted: 139 147 167;
+  --color-ink-faint: 91 98 114;
+  --color-accent: 99 102 241;
+  --color-accent-hover: 121 124 245;
+  --color-critical: 240 85 90;
+  --color-critical-soft: 47 26 27;
+  --color-warning: 245 166 35;
+  --color-warning-soft: 46 36 20;
+  --color-info: 34 184 207;
+  --color-info-soft: 18 38 42;
+  --color-success: 43 182 115;
+  --color-success-soft: 20 40 30;
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-bg text-ink-primary font-body antialiased transition-colors duration-200;
+  }
+  ::selection {
+    @apply bg-accent/20 text-ink-primary;
+  }
+  /* Visible keyboard focus, kept consistent across the app */
+  *:focus-visible {
+    outline: 2px solid theme("colors.accent.DEFAULT");
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: theme("colors.border.light");
+    border-radius: 999px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
