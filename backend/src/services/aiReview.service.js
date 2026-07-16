@@ -1,6 +1,3 @@
-// Calls OpenRouter's chat completions endpoint and asks the model to return
-// strictly-structured JSON so we can store issues in `review_issues` the same
-// way we store static-analysis results.
 
 const SYSTEM_PROMPT = `You are a senior software engineer performing a code review.
 Given a source file, respond with ONLY valid JSON (no markdown fences, no prose)
@@ -38,11 +35,8 @@ async function runAiReview(language, code) {
   }
 
   const body = {
-    // "openrouter/free" is OpenRouter's own auto-router: it picks from
-    // whichever free-tier models are currently available, so this works
-    // with no credit/billing on the account and keeps working even as
-    // individual free models rotate. Override via OPENROUTER_MODEL in .env
-    // if you want a specific paid or free model instead.
+    
+
     model: process.env.OPENROUTER_MODEL || "openrouter/free",
     messages: [
       { role: "system", content: SYSTEM_PROMPT },
@@ -75,7 +69,7 @@ async function runAiReview(language, code) {
 
   let parsed;
   try {
-    // Models occasionally wrap JSON in fences despite instructions -- strip them defensively.
+  
     const cleaned = raw.replace(/```json|```/g, "").trim();
     parsed = JSON.parse(cleaned);
   } catch {
