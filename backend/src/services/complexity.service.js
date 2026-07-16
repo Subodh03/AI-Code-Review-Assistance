@@ -1,7 +1,4 @@
-// Lightweight, language-aware complexity metrics.
-// This does NOT build a real AST — it's a fast heuristic pass good enough for
-// dashboard-level metrics. Swap in `radon` (Python) or an AST-based JS parser
-// (e.g. `escomplex`/`typescript` compiler API) for exact figures later.
+
 
 const FUNCTION_PATTERNS = {
   python: /^\s*def\s+\w+\s*\(/gm,
@@ -15,8 +12,6 @@ const CLASS_PATTERNS = {
   typescript: /\bclass\s+\w+/gm,
 };
 
-// Branching / decision-point keywords, one heuristic set covering
-// Python, JS and TS. Cyclomatic complexity = 1 + number of decision points.
 const BRANCH_KEYWORDS = /\b(if|elif|else if|for|while|case|catch|except|&&|\|\||\?\s*[^:]+:)\b/g;
 
 function countMatches(str, pattern) {
@@ -34,7 +29,6 @@ function computeComplexity(language, code) {
   const functionCount = countMatches(code, functionPattern);
   const classCount = countMatches(code, classPattern);
 
-  // +1 base path, then one extra path per decision point found anywhere in the file.
   const decisionPoints = countMatches(code, BRANCH_KEYWORDS);
   const cyclomaticComplexity = 1 + decisionPoints;
 
