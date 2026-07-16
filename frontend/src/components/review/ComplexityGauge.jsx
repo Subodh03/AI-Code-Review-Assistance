@@ -1,5 +1,4 @@
-// Simple linear gauge: complexity bands are heuristic, common thresholds
-// used by tools like radon/lizard (<=10 simple, <=20 moderate, >20 complex).
+
 function band(value) {
   if (value <= 10) return { label: "Simple", color: "bg-severity-success", text: "text-severity-success" };
   if (value <= 20) return { label: "Moderate", color: "bg-severity-warning", text: "text-severity-warning" };
