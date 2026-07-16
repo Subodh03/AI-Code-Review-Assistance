@@ -23,7 +23,6 @@ router.get("/", listReviews);
 router.get("/:id", getReviewDetail);
 router.delete("/:id", deleteReview);
 
-// TODO: GitHub repo import extension point.
-// router.post("/github", requireAuth, submitFromGithubRepo);
+
 
 module.exports = router;
